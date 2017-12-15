@@ -1,14 +1,98 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+   
+\documentclass[11pt]{article}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[linesnumbered,ruled]{algorithm2e}
 
-\title{cs235 study guide}
-\author{schiang2 }
-\date{December 2017}
+\usetikzlibrary{automata,positioning}
+\renewcommand{\arraystretch}{1.25}
+%
+% Basic Document Settings
+%
 
-\begin{document}
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\thepage}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\newcommand{\hmwkTitle}{Study Guide}
+\newcommand{\hmwkClass}{CS235: Languages and Automata}
+\newcommand{\hmwkAuthorName}{\textbf{Sophiya Chiang}}
+
+ \begin{document}
+ 
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Last updated: \today}\\
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
 
 \maketitle
 
-\section{Introduction}
+\pagebreak
+
+\tableofcontents
+
+\pagebreak
+
+\section{Automata Theory}
+\subsection{Regular languages}
+\subsubsection{Finite automata}
+
+
+\subsubsection{Nondeterminism}
+\subsubsection{Regular expressions}
+\subsubsection{Nonregular languages}
+
+\subsection{Context-free languages}
+\subsubsection{Context-free grammars}
+\subsubsection{Pushdown automata}
+\subsubsection{Non-context-free languages}
+
+\section{Computability Theory}
+\subsubsection{Turing machines}
+\subsubsection{Variants of Turing machines}
+\subsubsection{Algorithm definition}
+\subsubsection{Decidability}
+\subsubsection{Undecidability}
+\subsubsection{Undecidable problems from language theory}
+\subsubsection{Mapping reducibility}
+
+\section{Complexity Theory}
+\subsubsection{Measuring complexity}
+\subsubsection{The class P}
+\subsubsection{The class NP}
+\subsubsection{NP-Completeness}
+
 
 \end{document}
