@@ -351,10 +351,172 @@ When $s$ is divided into $xyz$, either $x$ or $z$ may be $\epsilon$, but conditi
 \pagebreak
 \section{Computability Theory}
 \subsection{Turing machines}
-
+\begin{itemize}[leftmargin=*]
+    \item Turing machines use an infinite tape as its unlimited memory.
+    \item It has a tape head that can read and write symbols and move around on the tape.
+    \item The schematic of a Turing Machine:
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[width=0.5\linewidth]{tm.png}
+    	\caption{Schematic of a Turing machine}
+    	\label{fig}
+    \end{figure}
+    \item The collection of strings that a Turing machine $M$ accepts is the language or $M$, or the language recognized by $M$, denoted by $L(M)$.
+\end{itemize}
+\textbf{\underline{Differences between finite automata and Turing machines}}
+\begin{enumerate}
+    \item A Turing machine can both write on the tape and read from it.
+    \item The read–write head can move both to the left and to the right.
+    \item The tape is infinite.
+    \item The special states for rejecting and accepting take effect immediately.
+\end{enumerate}
+\begin{defn}
+A \textbf{\textit{Turing machine}} is a 7-tuple $(Q,\Sigma, \Gamma, \delta, q_0, q_{accept},q_{reject})$, where $Q,\Sigma, \Gamma$ are all finite sets, and
+\begin{enumerate}
+    \item $Q$ is the set of states
+    \item $\Sigma$ is the input alphabet not containing the blank symbol $\sqcup$,
+    \item $\Gamma$ is the tape alphabet, where $\sqcup\in\Gamma$ and $\Sigma\subseteq\Gamma$,
+    \item $\delta:Q\times\Gamma\to Q\times\Gamma\times \{L,R\}$ is the transition function
+    \item $q_0\in Q$ is the start state, 
+    \item $q_{accept}\in Q$ is the accept state, and 
+    \item $q_{reject}\in Q$ is the reject state.
+\end{enumerate}
+A Turing machine $M = (Q,\Sigma, \Gamma, \delta, q_0, q_{accept},q_{reject})$ computes as follows. Initially, $M$ receives its input $w = w_1w_2\ldots w_n \in\Sigma^*$ on the leftmost $n$ squares of the tape, and the rest of the tape is blank (i.e., filled with blank symbols). The head starts on the leftmost square of the tape. Note that $\Sigma$ does not contain the blank symbol, so the first blank appearing on the tape marks the end of the input. Once $M$ has started, the computation proceeds according to the rules described by the transition function. If $M$ ever tries to move its head to the left off the left-hand end of the tape, the head stays in the same place for that move, even though the transition function indicates L. The computation continues until it enters either the accept or reject states, at which point it halts. If neither occurs, $M$ goes on forever.\\\\
+As a Turing machine computes, changes occur in the current state, the current tape contents, and the current head location. A setting of these three items is called a configuration of the Turing machine. Configurations often are represented in a special way. For a state $q$ and two strings $u$ and $v$ over the tape alphabet $\Gamma$, we write $u q v$ for the configuration where the current state is $q$, the current tape contents is $uv$, and the current head location is the first symbol of $v$. The tape contains only blanks following the last symbol of $v$. 
+\end{defn}
+\begin{defn}
+Call a language Turing-recognizable if some Turing machine recognizes it.
+\end{defn}
+\begin{defn}
+Call a language Turing-decidable or simply decidable if some Turing machine decides it.\\\\
+A Turing machines that halt on all inputs, never loops. These machines are called deciders because they always make a decision to accept or reject. A decider that recognizes some language also is said to decide that language.
+\end{defn}
 \subsection{Variants of Turing machines}
-\subsection{Algorithm definition}
+\begin{itemize}[leftmargin=*]
+    \item Variants of TMs and the original TM all have the same power because they recognize the same class of languages.
+    \item Robustness: invariance to certain changes in the definition.
+\end{itemize}
+\textbf{\underline{Multitape Turing machine}}
+\begin{thm}
+    Every multitape Turing machine has an equivalent single-tape Turing machine.
+\end{thm}
+\begin{thm}
+    A language is Turing-recognizable if and only if some multitape Turing machine recognizes it.
+\end{thm}
+\textbf{\underline{Nondeterministic Turing machine}}
+\begin{itemize}[leftmargin=*]
+    \item The transition function for a nondeterministic Turing machine has the form
+    \begin{center}
+        $\delta:Q\times\Gamma\to\wp(Q\times\Gamma\times\{L,R\})$
+    \end{center}
+    \item The computation of a nondeterministic Turing machine is a tree whose branches correspond to different possibilities for the machine. 
+    \item If some branch of the computation leads to the accept state, the machine accepts its input.
+\end{itemize}
+\begin{thm}
+    Every nondeterministic Turing machine has an equivalent deterministic Turing machine.
+\end{thm}
+\begin{thm}
+    A language is Turing-recognizable if and only if some nondeterministic Turing machine recognizes it.
+\end{thm}
+\begin{thm}
+    A language is decidable if and only if some nondeterministic Turing machine
+decides it.
+\end{thm}
+\textbf{\underline{Enumerators}}
+\begin{itemize}[leftmargin=*]
+    \item Turing-recognizable languages = recursively enumerable language
+    \item An enumerator is a Turing machine with an attached printer
+    \item The Turing machine can use that printer as an output device to print strings. 
+    \item Every time the Turing machine wants to add a string to the list, it sends the string to the printer.
+    \item An enumerator $E$ starts with a blank input on its work tape. If the enumerator doesn't halt, it may print an infinite list of strings. The language enumerated by $E$ is the collection of all the strings that it eventually prints out. Moreover, $E$ may generate the strings of the language in any order, possibly with repetitions.
+\end{itemize}
+\begin{thm}
+    A language is Turing-recognizable if and only if some enumerator enumerates it.
+\end{thm}
+\todo{proofs and equivalence phenomenon}
+
+% \subsection{Algorithm definition}
+% \begin{itemize}[leftmargin=*]
+%     \item An algorithm is a collection of simple instructions for carrying out some task
+% \end{itemize}
+
 \subsection{Decidability}
+\begin{itemize}[leftmargin=*]
+    \item Certain problems can be solved algorithmically and others cannot -- exploring the limits of algorithmic solvability
+\end{itemize}
+\subsubsection{Decidable problems concerning regular languages}
+\begin{thm}
+    $A_{DFA}$ is a decidable language.
+    \begin{center}
+        $A_{DFA} = \{\langle B,w\rangle\ |\ B$ is a DFA that accepts input string $w\}$.
+    \end{center}
+    The problem of testing whether a DFA $B$ accepts an input $w$ is the same as the problem of testing whether $\langle B, w\rangle$ is a member of the language $A_{DFA}$. Similarly, we can formulate other computational problems in terms of testing membership in a language. Showing that the language is decidable is the same as showing that the computational problem is decidable.
+\end{thm}
+\begin{proof}
+    \todo{proofs for this section}
+\end{proof}
+\begin{thm}
+    $A_{NFA}$ is a decidable language.
+    \begin{center}
+        $A_{NFA} = \{\langle B,w\rangle\ |\ B$ is a NFA that accepts input string $w\}$.
+    \end{center}
+\end{thm}
+\begin{proof}
+    \todo{proofs for this section}
+\end{proof}
+\begin{thm}
+    $A_{REX}$ is a decidable language.
+    \begin{center}
+        $A_{REX} = \{\langle R,w\rangle\ |\ R$ is a regular expression that generates string $w\}$.
+    \end{center}
+\end{thm}
+\begin{proof}
+    \todo{proofs for this section}
+\end{proof}
+\begin{thm}
+    $E_{DFA}$ is a decidable language.
+    \begin{center}
+        $E_{DFA} = \{\langle A\rangle\ |\ A$ is a DFA and $L(A)=\emptyset\}$.
+    \end{center}
+\end{thm}
+\begin{proof}
+    \todo{proofs for this section}
+\end{proof}
+\begin{thm}
+    $EQ_{DFA}$ is a decidable language.
+    \begin{center}
+        $EQ_{DFA} =\{\langle A, B\rangle\ |\ A$ and $B$ are DFAs and $L(A)=L(B)\}$.
+    \end{center}
+\end{thm}
+\begin{proof}
+    \todo{proofs for this section}
+\end{proof}
+
+\subsubsection{Decidable problems concerning context-free languages}
+\begin{thm}
+    $A_{CFG}$ is a decidable language.
+    \begin{center}
+        $A_{CFG} = \{\langle G,w\rangle\ |\ G$ is a CFG that generates string $w\}$.
+    \end{center}
+\end{thm}
+\begin{proof}
+    \todo{proofs for this section}
+\end{proof}
+\begin{thm}
+    $E_{CFG}$ is a decidable language.
+    \begin{center}
+        $E_{CFG} = \{\langle G\rangle\ |\ G$ is a CFG and $L(G)=\emptyset\}$.
+    \end{center}
+\end{thm}
+\begin{proof}
+    \todo{proofs for this section}
+\end{proof}
+\begin{thm}
+    Every context-free language is decidable.
+\end{thm}
+\begin{proof}
+    \todo{proofs for this section}
+\end{proof}
 \subsection{Undecidability}
 \subsection{Undecidable problems from language theory}
 \subsection{Mapping reducibility}
