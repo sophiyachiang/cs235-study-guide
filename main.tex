@@ -470,7 +470,7 @@ A \textbf{\textit{pushdown automaton}} is a 6-tuple $(Q,\Sigma, \Gamma, \delta, 
     \item $Q$ is the set of states
     \item $\Sigma$ is the input alphabet
     \item $\Gamma$ is the stack alphabet
-    \item $\delta:Q\times\Sigma_\epsilon\times \Gamma_\epsilon\to \wp(Q\times\Gamma_\epsilon$ is the transition function
+    \item $\delta:Q\times\Sigma_\epsilon\times \Gamma_\epsilon\to \wp(Q\times\Gamma_\epsilon)$ is the transition function
     \item $q_0\in Q$ is the start state, and 
     \item $F\subseteq Q$ is the set of accept states.
 \end{enumerate}
@@ -1074,11 +1074,11 @@ $G =$ "On input $\langle M,w\rangle$, where $M$ is a TM and $w$ a string:
 The only difference between $f$ and $g$ is in machine $M_1$. In $f$, machine $M_1$ always rejects, whereas in $g$ it always accepts. In both $f$ and $g$, $M$ accepts $w$ iff $M_2$ always accepts. In $g$, $M$ accepts $w$ iff $M_1$ and $M_2$ are equivalent. That is why $g$ is a reduction from $A_{TM}$ to $EQ_{TM}$.
 \end{proof}
 
-\section{Complexity Theory}
-\subsection{Measuring complexity}
-\subsection{The class P}
-\subsection{The class NP}
-\subsection{NP-Completeness}
+% \section{Complexity Theory}
+% \subsection{Measuring complexity}
+% \subsection{The class P}
+% \subsection{The class NP}
+% \subsection{NP-Completeness}
 
 
 \end{document}
